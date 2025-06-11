@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Alumno {
 
@@ -19,6 +21,7 @@ public class Alumno {
         joinColumns = @JoinColumn(name = "alumno_id"),
         inverseJoinColumns = @JoinColumn(name = "curso_id")
     )
+    @JsonIgnoreProperties("alumnos")
     private Set<Curso> cursos = new HashSet<>();
 
     // Getters y setters

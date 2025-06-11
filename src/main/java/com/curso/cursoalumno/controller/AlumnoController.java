@@ -19,6 +19,11 @@ public class AlumnoController {
     @Autowired
     private CursoRepository cursoRepository;
 
+    @PostMapping
+    public Alumno crearAlumno(@RequestBody Alumno alumno) {
+    return alumnoRepository.save(alumno);
+    }
+
     @PostMapping("/{alumnoId}/cursos/{cursoId}")
     public ResponseEntity<?> inscribirAlumnoACurso(@PathVariable Long alumnoId, @PathVariable Long cursoId) {
         Alumno alumno = alumnoRepository.findById(alumnoId).orElseThrow();

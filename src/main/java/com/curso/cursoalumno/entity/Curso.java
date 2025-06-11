@@ -3,6 +3,7 @@ package com.curso.cursoalumno.entity;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Curso {
@@ -14,10 +15,10 @@ public class Curso {
     private String nombre;
 
     @ManyToMany(mappedBy = "cursos")
+    @JsonIgnoreProperties("cursos") // evita bucles infinitos al serializar
     private Set<Alumno> alumnos = new HashSet<>();
 
     // Getters y setters
-
     public Long getId() {
         return id;
     }
