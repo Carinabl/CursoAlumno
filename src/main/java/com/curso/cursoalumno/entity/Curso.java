@@ -14,7 +14,7 @@ public class Curso {
 
     private String nombre;
 
-    @ManyToMany(mappedBy = "cursos")
+    @ManyToMany(mappedBy = "cursos", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JsonIgnoreProperties("cursos") // evita bucles infinitos al serializar
     private Set<Alumno> alumnos = new HashSet<>();
 

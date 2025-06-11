@@ -55,11 +55,19 @@ public class CursoController {
     // Eliminar un curso
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarCurso(@PathVariable Long id) {
-        if (cursoRepository.existsById(id)) {
-            cursoRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    Optional<Curso> cursoOpt = cursoRepository.findById(id);
+    if (cursoOpt.isPresent()) {
+        Curso curso = cursoOpt.get();
+
+        // Desasociar los alumnos antes de eliminar
+        curso.getAlumnos().forEach(alumno -> alumno.getCursos().remove(curso));
+        curso.getAlumnos().clear();
+        cursoRepository.save(curso);  // Guardar los cambios antes de eliminar
+
+        cursoRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.notFound().build();
+    }
     }
 }

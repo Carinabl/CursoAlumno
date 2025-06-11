@@ -40,6 +40,7 @@ const CursoDetalle = () => {
       })
       .catch(err => console.error(err));
   };
+  
 
   if (!curso) return <p>Cargando...</p>;
 

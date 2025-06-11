@@ -22,7 +22,7 @@ const CursoModal = ({ show, handleClose, nuevoCurso, setNuevoCurso, handleCrearC
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
-        <Button variant="primary" onClick={handleCrearCurso}>Crear</Button>
+        <Button variant="primary" onClick={handleCrearCurso}>Guardar</Button>
       </Modal.Footer>
     </Modal>
   );
