@@ -14,6 +14,10 @@ public class Curso {
 
     private String nombre;
 
+    private String horario; 
+
+    private String aula;
+
     @ManyToMany(mappedBy = "cursos", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JsonIgnoreProperties("cursos") // evita bucles infinitos al serializar
     private Set<Alumno> alumnos = new HashSet<>();
@@ -35,6 +39,22 @@ public class Curso {
         this.nombre = nombre;
     }
 
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
+    
     public Set<Alumno> getAlumnos() {
         return alumnos;
     }

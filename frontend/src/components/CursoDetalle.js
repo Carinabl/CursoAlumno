@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import AlumnoModal from './AlumnoModal'; // importá el modal
+import AlumnoModal from './AlumnoModal'; 
 import { useNavigate } from 'react-router-dom';
 
 const CursoDetalle = () => {
@@ -45,9 +45,12 @@ const CursoDetalle = () => {
   if (!curso) return <p>Cargando...</p>;
 
   return (
-    <div className="container">
-      <h2>Curso: {curso.nombre}</h2>
-
+    <div className="container mt-4">
+      <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
+      <h2>{curso.nombre}</h2>
+      <p><strong>Horario:</strong> {curso.horario || "Sin definir"}</p>
+      <p><strong>Aula:</strong> {curso.aula || "Sin asignar"}</p>
+      </div>
       <h4>Alumnos:</h4>
       <ul>
         {curso.alumnos && curso.alumnos.map(alumno => (
@@ -60,7 +63,7 @@ const CursoDetalle = () => {
       </button>
       <button onClick={volver} className="btn btn-secondary mt-3">
         Volver
-      </button>
+      </button> 
 
       <AlumnoModal
         show={showModal}

@@ -46,6 +46,8 @@ public class CursoController {
         return cursoRepository.findById(id)
                 .map(cursoExistente -> {
                     cursoExistente.setNombre(nuevoCurso.getNombre());
+                    cursoExistente.setHorario(nuevoCurso.getHorario());
+                    cursoExistente.setAula(nuevoCurso.getAula());
                     Curso actualizado = cursoRepository.save(cursoExistente);
                     return ResponseEntity.ok(actualizado);
                 })
