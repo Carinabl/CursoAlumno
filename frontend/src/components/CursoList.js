@@ -15,7 +15,7 @@ function CursoList() {
   
       
   useEffect(() => {
-    axios.get("${API_URL}/cursos").then((res) => {
+    axios.get("${process.env.REACT_APP_API_URL}/cursos").then((res) => {
       setCursos(res.data);
     });
   }, []);
