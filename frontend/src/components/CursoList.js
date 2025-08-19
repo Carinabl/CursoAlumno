@@ -5,14 +5,17 @@ import { Button, Table } from 'react-bootstrap';
 import CursoModal from './CursoModal';
 import { FaEye } from "react-icons/fa";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function CursoList() {
   const [cursos, setCursos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [nuevoCurso, setNuevoCurso] = useState({ nombre: "" , horario: "", aula: "" });
   const [editando, setEditando] = useState(false);
+  
       
   useEffect(() => {
-    axios.get("http://localhost:8080/cursos").then((res) => {
+    axios.get("${API_URL}/cursos").then((res) => {
       setCursos(res.data);
     });
   }, []);
