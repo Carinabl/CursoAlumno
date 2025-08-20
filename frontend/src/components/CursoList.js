@@ -84,7 +84,7 @@ function CursoList() {
           </tr>
         </thead>
         <tbody>
-          {cursos && cursos.map(curso => (
+          {cursos.map(curso => (
             <tr key={curso.id}>
               <td>{curso.nombre}</td>
               <td>{curso.horario}</td>
