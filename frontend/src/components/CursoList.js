@@ -60,7 +60,19 @@ function CursoList() {
   };
 
   return (
-    <div className="container mt-4">
+    <div>
+      <h2>Lista de Cursos</h2>
+      {Array.isArray(cursos) && cursos.length > 0 ? (
+        <ul>
+          {cursos.map((curso) => (
+            <li key={curso.id}>{curso.nombre}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No hay cursos cargados.</p>
+      )}
+    </div> 
+   {/*<div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Cursos</h2>
         <Button
@@ -69,9 +81,9 @@ function CursoList() {
         setEditando(false);                                   // ← aseguramos que no está editando
         setShowModal(true);                                   // ← abrimos el modal
         }}
->
-  Crear Curso
-</Button>
+        >
+    Crear Curso
+      </Button>
       </div>
 
       <Table striped bordered hover responsive>
@@ -104,7 +116,7 @@ function CursoList() {
         </tbody>
       </Table>
 
-      {/* Modal separado como componente */}
+      
     <CursoModal
       show={showModal}
       handleClose={() => setShowModal(false)}
@@ -112,7 +124,7 @@ function CursoList() {
       setNuevoCurso={setNuevoCurso}
       handleCrearCurso={handleCrearCurso}
     />
-    </div>
+    </div> */}
   );
 }
 
