@@ -16,22 +16,22 @@ const CursoDetalle = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/cursos/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/cursos/${id}`)
       .then(res => setCurso(res.data))
       .catch(err => console.error(err));
   }, [id]);
 
   const handleCrearAlumno = () => {
     
-    axios.post('http://localhost:8080/alumnos', nuevoAlumno)
+    axios.post('${process.env.REACT_APP_API_URL}/alumnos', nuevoAlumno)
       .then(res => {
         const alumnoCreado = res.data;
         // Inscribir el alumno al curso
-        return axios.post(`http://localhost:8080/alumnos/${alumnoCreado.id}/cursos/${id}`);
+        return axios.post(`${process.env.REACT_APP_API_URL}/alumnos/${alumnoCreado.id}/cursos/${id}`);
       })
       .then(() => {
         // Recargar curso con nuevos alumnos
-        return axios.get(`http://localhost:8080/cursos/${id}`);
+        return axios.get(`${process.env.REACT_APP_API_URL}/cursos/${id}`);
       })
       .then(res => {
         setCurso(res.data);
