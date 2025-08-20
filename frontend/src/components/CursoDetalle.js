@@ -53,7 +53,7 @@ const CursoDetalle = () => {
       </div>
       <h4>Alumnos:</h4>
       <ul>
-        {curso.alumnos && curso.alumnos.map(alumno => (
+        {curso && curso.alumnos && curso.alumnos.map(alumno => (
           <li key={alumno.id}>{alumno.nombre}</li>
         ))}
       </ul>
