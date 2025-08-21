@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://172.200.77.2")
 @RestController
 @RequestMapping("/cursos")
 public class CursoController {
