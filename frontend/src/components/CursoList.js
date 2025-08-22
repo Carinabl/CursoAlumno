@@ -14,7 +14,7 @@ function CursoList() {
   
       
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/cursos`).then((res) => {
+    axios.get(`/api/cursos`).then((res) => {
       setCursos(res.data);
     });
   }, []);
@@ -25,11 +25,11 @@ function CursoList() {
   try {
     if (editando) {
       // Si estamos editando, enviamos una petición PUT
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/cursos/${nuevoCurso.id}`, nuevoCurso);
+      const response = await axios.put(`/api/cursos/${nuevoCurso.id}`, nuevoCurso);
       setCursos(cursos && cursos.map(c => c.id === nuevoCurso.id ? response.data : c));
     } else {
       // Si no estamos editando, enviamos una petición POST
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/cursos`, nuevoCurso);
+      const response = await axios.post(`$/api/cursos`, nuevoCurso);
       setCursos([...cursos, response.data]);
     }
 
@@ -43,7 +43,7 @@ function CursoList() {
 };
 
   const handleEliminarCurso = (cursoId) => {
-  axios.delete(`${process.env.REACT_APP_API_URL}/cursos/${cursoId}`)
+  axios.delete(`/api/cursos/${cursoId}`)
     .then(() => {
       setCursos(cursos.filter(curso => curso.id !== cursoId));
     })
