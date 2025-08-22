@@ -29,7 +29,7 @@ function CursoList() {
       setCursos(cursos && cursos.map(c => c.id === nuevoCurso.id ? response.data : c));
     } else {
       // Si no estamos editando, enviamos una petición POST
-      const response = await axios.post(`$/api/cursos`, nuevoCurso);
+      const response = await axios.post(`/api/cursos`, nuevoCurso);
       setCursos([...cursos, response.data]);
     }
 
